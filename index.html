@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pranayama — Ramaswami / LMU 2026</title>
+  <style>
+    :root {
+      --bg: #f0f0f0;
+      --surface: #e8e8e8;
+      --border: #cccccc;
+      --accent: #555555;
+      --accent-light: #dedede;
+      --text: #1a1a1a;
+      --muted: #777777;
+      --quote-bg: #e4e4e4;
+      --quote-border: #aaaaaa;
+      --nav-width: 220px;
+      --content-max: 740px;
+      --sans: Helvetica, Arial, sans-serif;
+      --serif: Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── Layout ── */
+    .page-wrap {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    nav.sidebar {
+      width: var(--nav-width);
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 2rem 1.25rem;
+    }
+
+    nav.sidebar .nav-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    nav.sidebar a {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.3rem 0;
+      border-left: 2px solid transparent;
+      padding-left: 0.6rem;
+      margin-left: -0.6rem;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    nav.sidebar a:hover {
+      color: var(--text);
+      border-left-color: var(--accent);
+    }
+
+    nav.sidebar .nav-group {
+      margin-top: 1.2rem;
+    }
+
+    nav.sidebar .nav-group-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    main {
+      flex: 1;
+      max-width: calc(var(--content-max) + 6rem);
+      padding: 3rem 3rem 5rem 3rem;
+    }
+
+    /* ── Header ── */
+    .page-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .page-header .label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .page-header h1 {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: normal;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+
+    .page-header .subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: normal;
+      color: var(--text);
+      margin-bottom: 1rem;
+      padding-top: 0.5rem;
+    }
+
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      margin: 1.6rem 0 0.5rem;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 1.4rem 0 0.4rem;
+    }
+
+    p { margin-bottom: 0.9rem; }
+
+    em.sk {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ── Blockquote ── */
+    blockquote {
+      background: var(--quote-bg);
+      border-left: 3px solid var(--quote-border);
+      padding: 1rem 1.25rem;
+      margin: 1.2rem 0;
+      font-family: var(--serif);
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    blockquote cite {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      font-style: normal;
+      font-family: var(--sans);
+      color: var(--muted);
+    }
+
+    /* ── Definition grid ── */
+    .def-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .def-cell {
+      background: var(--surface);
+      padding: 0.9rem 1.1rem;
+    }
+
+    .def-cell .term {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .def-cell .sk-term {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+
+    .def-cell p {
+      font-size: 0.88rem;
+      color: var(--text);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ── Ratio table ── */
+    .ratio-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+    }
+
+    .ratio-table th {
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      background: var(--accent-light);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ratio-table td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .ratio-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ── Technique cards ── */
+    .technique-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 1.2rem;
+      background: var(--surface);
+    }
+
+    .technique-card .card-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .technique-card .card-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .technique-card .card-sk {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    .technique-card .card-tag {
+      margin-left: auto;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--accent-light);
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+    }
+
+    .technique-card p { font-size: 0.91rem; margin-bottom: 0.5rem; }
+    .technique-card p:last-child { margin-bottom: 0; }
+
+    .technique-card .detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+    }
+
+    .technique-card .detail-list li {
+      font-size: 0.88rem;
+      padding: 0.2rem 0;
+      padding-left: 1rem;
+      position: relative;
+      color: var(--text);
+    }
+
+    .technique-card .detail-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    /* ── Progression bar ── */
+    .progression {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 1.2rem 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+
+    .prog-step {
+      background: var(--accent-light);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .prog-step.highlight {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .prog-arrow {
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding: 0 0.3rem;
+    }
+
+    /* ── Note box ── */
+    .note {
+      background: var(--accent-light);
+      border-radius: 4px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.88rem;
+      margin: 1rem 0;
+      line-height: 1.6;
+    }
+
+    .note strong { color: var(--accent); }
+
+    /* ── Divider ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 1.25rem;
+      margin-top: 2rem;
+      line-height: 1.6;
+    }
+
+    footer a { color: var(--muted); }
+
+    @media (max-width: 700px) {
+      nav.sidebar { display: none; }
+      main { padding: 1.5rem 1.25rem; }
+      .def-grid { grid-template-columns: 1fr; }
+      .progression { flex-direction: column; align-items: flex-start; }
+      .prog-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ── Sidebar navigation ── -->
+  <nav class="sidebar">
+    <div class="nav-title">Pranayama</div>
+    <a href="#what-is">What is Pranayama?</a>
+    <a href="#prerequisites">Prerequisites</a>
+    <a href="#four-components">The Four Components</a>
+    <a href="#ratios">Breath Ratios</a>
+    <a href="#bandhas">Bandhas</a>
+    <a href="#agarbha-sagarbha">Agarbha & Sagarbha</a>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Techniques</div>
+      <a href="#ujjayi">Ujjayi</a>
+      <a href="#kapalabhati">Kapalabhati</a>
+      <a href="#bastrika">Bastrika</a>
+      <a href="#nadi-shodhana">Nadi Shodhana</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-group-label">Context</div>
+      <a href="#nervous-system">Nervous System</a>
+      <a href="#gunas">Gunas & Mind</a>
+      <a href="#ashtanga">Place in Ashtanga</a>
+      <a href="#practice-guidelines">Practice Guidelines</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </nav>
+
+  <!-- ── Main content ── -->
+  <main>
+
+    <div class="page-header">
+      <div class="label">Srivatsa Ramaswami · LMU Los Angeles · February 2026</div>
+      <h1>Pranayama</h1>
+      <p class="subtitle">
+        Notes from the four-day Vinyasa Krama seminar led by Srivatsa Ramaswami — a direct
+        student of Krishnamacharya, and my first time learning from him in person. These are
+        personal study notes I'm sharing as a resource for anyone curious about pranayama.
+        For those who want to go deeper, Sri Ramaswami has an excellent
+        <a href="https://www.youtube.com/@srivatsaramaswami">YouTube channel</a> and
+        <a href="https://groups.google.com/g/vinyasa-krama-announce">email newsletter</a>. The seminar covered far more than pranayama, but it was the
+        area I knew least and am most focused on building into my practice.
+      </p>
+    </div>
+
+
+    <!-- ── What is Pranayama ── -->
+    <section id="what-is">
+      <h2>What is Pranayama?</h2>
+
+      <p>
+        Two Sanskrit roots: <em class="sk">prana</em> (the life force, or vayu, in the body)
+        and <em class="sk">ayama</em> (to extend or bring under control).
+        Together: voluntary regulation of the life force through breath.
+      </p>
+
+      <blockquote>
+        "Prana refers to the vayu (force) in the body. Aayama is to completely
+        control it — to bring it under voluntary control."
+        <cite>— Ramaswami, <em>Sagarbha Pranayama</em></cite>
+      </blockquote>
+
+      <p>
+        Breathing is normally shallow and involuntary. Pranayama changes that.
+        Bring breath under deliberate control, and other involuntary functions of
+        body and mind follow. Ramaswami called it the most essential aspect
+        of living. The root <em class="sk">aya</em> means to make longer;
+        <em class="sk">yama</em> means to span.
+      </p>
+
+      <blockquote>
+        "The yogis have found that by exercising control on Prana, one can
+        control the mind and thereafter transcend it."
+        <cite>— Ramaswami, <em>Sagarbha Pranayama</em></cite>
+      </blockquote>
+
+      <blockquote>
+        The Prashna Upanishad says that prana is <em class="sk">sharira dharaka</em> — the holder of the body. The moment prana leaves the body, the body collapses.
+        <cite>— Ramaswami, seminar notes (Day 3)</cite>
+      </blockquote>
+
+    </section>
+
+
+    <!-- ── Prerequisites ── -->
+    <section id="prerequisites">
+      <h2>Prerequisites</h2>
+
+      <p>
+        Patanjali's definition (YS 2.49) opens with a condition:
+        <em class="sk">tasmin sati</em>, "with that established." The "that" is
+        <em class="sk">asana</em>.
+      </p>
+
+      <blockquote>
+        "Remaining in a posture (which is comfortable and steady), controlling
+        the inward and outward movement of breath is pranayama."
+        <cite>— Patanjali, Yoga Sutras 2.49, cited in <em>Sagarbha Pranayama</em></cite>
+      </blockquote>
+
+      <blockquote>
+        My teacher would never allow me to leave the class without doing pranayama practice. Every day — we have to include pranayama every day.
+        <cite>— Ramaswami, seminar notes (Day 2)</cite>
+      </blockquote>
+
+      <p>
+        Asana isn't just structural preparation. Vinyasa krama practice conditions
+        the respiratory apparatus and addresses blood and pranic circulation. By
+        the time you sit for pranayama, the body is ready to actually be still.
+      </p>
+
+      <div class="note">
+        Practical note from the seminar: Ramaswami recommended
+        taking a small sip of water and emptying the bladder before pranayama
+        practice. Practice should ideally include equal parts asana, pranayama,
+        and dharana. This ratio can shift with life stage: younger practitioners
+        benefit from more asana; elderly practitioners benefit from more dharana.
+      </div>
+    </section>
+
+
+    <!-- ── Four Components ── -->
+    <section id="four-components">
+      <h2>The Four Components</h2>
+
+      <p>
+        Pranayama is not simply breathing. It has four distinct phases.
+      </p>
+
+      <div class="def-grid">
+        <div class="def-cell">
+          <div class="term">1. Inhalation</div>
+          <div class="sk-term">Puraka</div>
+          <p>Complete drawing in of air through the nostrils.</p>
+        </div>
+        <div class="def-cell">
+          <div class="term">2. Internal Retention</div>
+          <div class="sk-term">Antahkumbhaka</div>
+          <p>Holding the breath in after inhalation.</p>
+        </div>
+        <div class="def-cell">
+          <div class="term">3. Exhalation</div>
+          <div class="sk-term">Rechaka</div>
+          <p>Complete expelling of air from the lungs.</p>
+        </div>
+        <div class="def-cell">
+          <div class="term">4. External Retention</div>
+          <div class="sk-term">Bahyakumbhaka</div>
+          <p>Holding the breath out after complete exhalation. The breath is held using bandhas (locks).</p>
+        </div>
+      </div>
+
+      <blockquote>
+        "Pranayama is the act of preventing both the activities of inhalation
+        and exhalation. Even this is of two kinds. One is holding the breath
+        after complete inhalation and the other is to hold the 'breath out' as
+        it were, after complete exhalation."
+        <cite>— Ramaswami, <em>Sagarbha Pranayama</em></cite>
+      </blockquote>
+
+      <p>
+        The retention (<em class="sk">kumbhaka</em>) is what distinguishes
+        pranayama from simple breathing exercises.
+      </p>
+    </section>
+
+
+    <!-- ── Breath Ratios ── -->
+    <section id="ratios">
+      <h2>Breath Ratios</h2>
+
+      <p>
+        From the <em>Sagarbha Pranayama</em> essay: Patanjali identifies three
+        qualities of pranayama — <em class="sk">desha</em> (place: where in the body
+        the breath is felt), <em class="sk">kaala</em> (time: duration of each phase),
+        and <em class="sk">samkhya</em> (number: repetitions). All three matter.
+      </p>
+
+      <p>
+        The most widely used classical ratio is 1:4:2: inhale
+        for one unit, retain for four, exhale for two.
+      </p>
+
+      <table class="ratio-table">
+        <tr>
+          <th>Phase</th>
+          <th>Ratio</th>
+          <th>Example (seconds)</th>
+        </tr>
+        <tr>
+          <td>Puraka: Inhale</td>
+          <td>1</td>
+          <td>5 sec</td>
+        </tr>
+        <tr>
+          <td>Antahkumbhaka: Retain</td>
+          <td>4</td>
+          <td>20 sec</td>
+        </tr>
+        <tr>
+          <td>Rechaka: Exhale</td>
+          <td>2</td>
+          <td>10 sec</td>
+        </tr>
+      </table>
+
+
+      <p>
+        Alternative duration across all phases is also valid. What matters is
+        <em>consistency</em> within a sitting and slow development over time.
+      </p>
+
+      <div class="note">
+        Key principle: Ratios must be developed slowly. Never
+        force breath retention. The capacity to hold comfortably for the
+        prescribed duration of mantra (64 syllables, ~20 seconds) is built
+        through patient, gradual practice.
+      </div>
+    </section>
+
+
+    <!-- ── Bandhas ── -->
+    <section id="bandhas">
+      <h2>Bandhas in Pranayama</h2>
+
+      <p>
+        <em class="sk">Bandhas</em> (locks) are internal muscular contractions
+        applied during kumbhaka.
+      </p>
+
+      <p>
+        Ramaswami mentioned bandhas primarily at the end of
+        exhalation (before or during bahyakumbhaka). Patanjali refers
+        to this indirectly via <em class="sk">desha paridrishti</em> (the
+        "witnessed placement" of held breath in specific regions of the body).
+      </p>
+
+      <p>
+        From the <em>Sagarbha Pranayama</em> essay: classical texts describe the
+        held breath, directed by bandhas, as forcing "circulation from the roots
+        of hair and the end of nails."
+      </p>
+
+    </section>
+
+
+    <!-- ── Agarbha vs Sagarbha ── -->
+    <section id="agarbha-sagarbha">
+      <h2>Agarbha and Sagarbha</h2>
+
+      <p>
+        Two types, based on whether mantra and dhyana are incorporated:
+      </p>
+
+      <div class="def-grid">
+        <div class="def-cell">
+          <div class="term">Without mantra</div>
+          <div class="sk-term">Agarbha (Amantraka)</div>
+          <p>Breath regulation practiced without a mantra or contemplative
+          object. The breath itself is regulated, but there is no internal
+          recitation.</p>
+        </div>
+        <div class="def-cell">
+          <div class="term">With mantra</div>
+          <div class="sk-term">Sagarbha (Samantraka)</div>
+          <p>Breath regulation practiced with mantra and dhyana woven into each phase.</p>
+        </div>
+      </div>
+
+      <blockquote>
+        "Agarbha is to practice breath control without dhyana and Sagarbha is
+        such a practice with an object for contemplation."
+        <cite>— Narada, cited in Ramaswami's <em>Sagarbha Pranayama</em></cite>
+      </blockquote>
+
+    </section>
+
+
+    <!-- ── Techniques ── -->
+    <section id="techniques">
+      <h2>The Techniques</h2>
+
+      <p>
+        Kapalabhati, ujjayi, and bastrika each address a
+        different physiological condition. They're not interchangeable.
+      </p>
+
+      <blockquote>
+        The respiratory tract is not one unit — there are different parts to it, different aspects. Just as the body has different parts and you must exercise them with different asanas, you must exercise the different parts of the respiratory system. So you have different pranayamas.
+        <cite>— Ramaswami, seminar notes (Day 1)</cite>
+      </blockquote>
+
+      <!-- Ujjayi -->
+      <div class="technique-card" id="ujjayi">
+        <div class="card-header">
+          <span class="card-name">Ujjayi</span>
+          <span class="card-sk">ujjāyī</span>
+        </div>
+        <p>
+          A slow, controlled breath with gentle constriction at the throat,
+          producing a soft hissing sound. Ramaswami described it as "very
+          unique to yoga" and noted its similarity to the breathing pattern
+          in bronchial asthma: it targets the tracheal and bronchial area
+          specifically.
+        </p>
+        <p>
+          Different variations exist: inhale with ujjayi and exhale through one nostril
+          (Anuloma Ujjayi); inhale through one nostril and exhale with ujjayi
+          (Pratiloma Ujjayi); or both phases through the throat.
+        </p>
+        <ul class="detail-list">
+          <li>Throat slightly contracted, producing a mild rubbing sensation</li>
+          <li>Soft hissing sound on inhale and/or exhale</li>
+          <li>Works on the tracheal and bronchial area</li>
+          <li>Forms the base breath for more complex pranayama variations</li>
+        </ul>
+      </div>
+
+      <!-- Kapalabhati -->
+      <div class="technique-card" id="kapalabhati">
+        <div class="card-header">
+          <span class="card-name">Kapalabhati</span>
+          <span class="card-sk">kapālabhāti</span>
+        </div>
+        <p>
+          Forceful, rapid exhalations driven by sharp contractions
+          of the diaphragm, with passive inhalations between them.
+        </p>
+        <p>
+          Amy's notes: kapalabhati corrects an
+          overactive sympathetic nervous system, specifically
+          the muscles of the diaphragm that trigger overly reactive diaphragmatic
+          sweeping. It calms tamas (heaviness, sleepiness) and is one of the
+          primary antidotes to the first enemy of meditation.
+        </p>
+        <ul class="detail-list">
+          <li>Forceful exhalation, passive inhalation</li>
+          <li>Rhythmic abdominal pumping</li>
+          <li>Clears respiratory passages</li>
+          <li>Addresses tamas: the heaviness or dullness that prevents meditation</li>
+        </ul>
+      </div>
+
+      <!-- Bastrika -->
+      <div class="technique-card" id="bastrika">
+        <div class="card-header">
+          <span class="card-name">Bastrika</span>
+          <span class="card-sk">bhastrīkā</span>
+        </div>
+        <p>
+          "Bellows breath." Rapid, forceful inhalations and
+          exhalations, both active, unlike kapalabhati which has a passive
+          inhale. Named for the blacksmith's bellows.
+        </p>
+        <p>
+          Amy's notes: bastrika addresses overactive coughing and
+          lung irritation. Where kapalabhati calms the diaphragm,
+          bastrika works on the lungs and upper airways more forcefully.
+        </p>
+        <ul class="detail-list">
+          <li>Both inhale and exhale are vigorous</li>
+          <li>Generates heat and stimulates the system</li>
+          <li>Used for lung clearing and addressing respiratory congestion</li>
+        </ul>
+      </div>
+
+      <!-- Nadi Shodhana -->
+      <div class="technique-card" id="nadi-shodhana">
+        <div class="card-header">
+          <span class="card-name">Nadi Shodhana</span>
+          <span class="card-sk">nāḍī śodhana</span>
+        </div>
+        <p>
+          "Channel-purifying breath." Alternate nostril
+          breathing. Inhalation through one nostril, retention, exhalation
+          through the other, then the pattern reverses. The right nostril is
+          controlled with the right thumb; the left with the ring and little
+          fingers. The index and middle fingers are never used.
+        </p>
+        <p>
+          The classical method: inhale through the left nostril (ida), retain
+          with mantra, exhale through the right nostril (pingala); then reverse.
+        </p>
+        <ul class="detail-list">
+          <li>Purifies the ida and pingala nadis</li>
+          <li>Ideal vehicle for sagarbha practice with mantra during kumbhaka</li>
+          <li>Traditional: left nostril inhale → kumbhaka → right nostril exhale, alternate</li>
+        </ul>
+      </div>
+
+    </section>
+
+
+    <!-- ── Nervous System ── -->
+    <section id="nervous-system">
+      <h2>Pranayama and the Nervous System</h2>
+
+      <p>
+        Breath is the only major vital function that is <em>both voluntary and
+        involuntary</em>. Ramaswami drew on yogic teaching and neurophysiology
+        to explain why that matters: it's the yogi's direct entry point into
+        the autonomic nervous system.
+      </p>
+
+      <blockquote>
+        "Respiratory function can be more easily influenced than any other vital
+        function and the yogi uses it as a first step in his control of the
+        nervous system. When cortical higher brain control is achieved over one
+        basic function, it is possible to achieve control over other basic
+        functions."
+        <cite>— Ramaswami, <em>Sagarbha Pranayama</em></cite>
+      </blockquote>
+
+
+      <p>
+        From the <em>Sagarbha Pranayama</em> essay: Patanjali calls this
+        <em class="sk">chitta parinama</em> (alteration of brain cells). Consistent
+        practice "quite likely leads to an enlargement of the scope of the
+        reticular function and of the cortex." Like a farmer diverting water
+        through a field, the yogi only has to direct neurological energies
+        along certain paths.
+      </p>
+
+      <blockquote>
+        Breath and manas are good friends. When the mind is disturbed, the
+        breath is disturbed.
+        <cite>— Ramaswami, seminar notes (Day 2)</cite>
+      </blockquote>
+    </section>
+
+
+    <!-- ── Gunas and Mind ── -->
+    <section id="gunas">
+      <h2>Gunas, Mind, and Pranayama</h2>
+
+      <p>
+        Ramaswami mapped mental conditions to the three gunas and named which pranayamas address each:
+      </p>
+
+      <table class="ratio-table">
+        <tr>
+          <th>Guna</th>
+          <th>Quality</th>
+          <th>How it Manifests</th>
+        </tr>
+        <tr>
+          <td><em class="sk">Sattva</em></td>
+          <td>Clarity, lightness</td>
+          <td>Clear, present mind; the desired state for meditation</td>
+        </tr>
+        <tr>
+          <td><em class="sk">Rajas</em></td>
+          <td>Restlessness, agitation</td>
+          <td>Active, flighty mind; annoyances and tensions build up</td>
+        </tr>
+        <tr>
+          <td><em class="sk">Tamas</em></td>
+          <td>Heaviness, dullness</td>
+          <td>Sleepy mind; waste products and lethargy accumulate</td>
+        </tr>
+      </table>
+
+      <blockquote>
+        Yama and niyama help you reduce unnecessary mental disturbances. Asana helps you overcome unnecessary bodily vrittis. Pranayama removes the chatter in your mind.
+        <cite>— Ramaswami, seminar notes (Day 4)</cite>
+      </blockquote>
+
+      <p>
+        The two enemies of meditation: lethargy and an overactive
+        mind. Excess tamas, excess rajas. Pranayama comes before meditation
+        specifically to address both and bring the mind to a sattvic state.
+      </p>
+
+      <blockquote>
+        "Tatah kshiyate prakaasa aavaranam — With pranayama, the clouding of
+        the mind reduces and the intellect shines in its true splendour."
+        <cite>— Patanjali, Yoga Sutras 2.52, cited by Ramaswami</cite>
+      </blockquote>
+
+      <blockquote>
+        If you practice pranayama regularly for a few days, there is a complete change in the way the mind functions. The chatter starts coming down.
+        <cite>— Ramaswami, seminar notes (Day 4)</cite>
+      </blockquote>
+    </section>
+
+
+    <!-- ── Place in Ashtanga ── -->
+    <section id="ashtanga">
+      <h2>Pranayama's Place in Ashtanga</h2>
+
+      <p>
+        Pranayama is the fourth limb of Patanjali's eight-limbed path.
+        Each limb prepares the next:
+      </p>
+
+      <div class="progression">
+        <div class="prog-step">Yama</div>
+        <div class="prog-arrow">→</div>
+        <div class="prog-step">Niyama</div>
+        <div class="prog-arrow">→</div>
+        <div class="prog-step">Asana</div>
+        <div class="prog-arrow">→</div>
+        <div class="prog-step highlight">Pranayama</div>
+        <div class="prog-arrow">→</div>
+        <div class="prog-step">Pratyahara</div>
+        <div class="prog-arrow">→</div>
+        <div class="prog-step">Dharana</div>
+        <div class="prog-arrow">→</div>
+        <div class="prog-step">Dhyana</div>
+        <div class="prog-arrow">→</div>
+        <div class="prog-step">Samadhi</div>
+      </div>
+
+      <blockquote>
+        Just as vinyasas are necessary preparation for asanas, pranayama and asana are necessary for meditation — because they reduce excess mental production.
+        <cite>— Ramaswami, seminar notes (Day 1)</cite>
+      </blockquote>
+
+      <p>
+        Asana gets the body still. Pranayama steadies the mind. As breath
+        settles, sensory activity naturally decreases: pratyahara.
+      </p>
+
+      <blockquote>
+        Asana → pranayama → pratyahara → dharana. Once you start
+        meditation, you are the teacher.
+        <cite>— Ramaswami, seminar notes (Day 1)</cite>
+      </blockquote>
+
+      <p>
+        <em class="sk">Dharanasu cha yogyata manasah</em>: from pranayama, the
+        mind becomes fit for dharana. That's the gateway to the inner practice.
+      </p>
+
+      <p>
+        Ramaswami was clear: equal parts asana, pranayama, and dharana. A session
+        divides into thirds. This ratio can shift with life stage: younger practitioners
+        benefit from more asana; elderly practitioners benefit from more dharana.
+        Most modern practitioners spend nearly all their time on asana — a
+        significant departure from the classical model.
+      </p>
+    </section>
+
+
+    <!-- ── Practice Guidelines ── -->
+    <section id="practice-guidelines">
+      <h2>Practice Guidelines</h2>
+
+      <h4>Posture</h4>
+      <p>
+        Sit in a stable, comfortable seated position. Upright spine.
+      </p>
+
+      <h4>Preparation</h4>
+      <p>
+        Small sip of water, empty bladder, complete asana practice first.
+      </p>
+
+      <h4>Consistency</h4>
+
+      <blockquote>
+        As you get older, the lung capacity comes down — the alveoli become less elastic. That is why, on a daily basis, you have to stretch them, so that the elasticity is maintained and you can have good breathing capacity for a longer period of time.
+        <cite>— Ramaswami, seminar notes (Day 2)</cite>
+      </blockquote>
+
+      <blockquote>
+        Just like you enjoy asana practice, if you regularly practice pranayama, you will also enjoy it. It takes a little while, and later on, the mind slowly settles down and begins to enjoy the peace that pranayama produces.
+        <cite>— Ramaswami, seminar notes (Day 2)</cite>
+      </blockquote>
+
+      <h4>Developing Kumbhaka Gradually</h4>
+      <p>
+        Never force retention. Start with whatever duration feels effortless.
+        Extend incrementally over months.
+      </p>
+
+
+    </section>
+
+
+    <hr>
+
+    <!-- ── Sources ── -->
+    <section id="sources">
+      <h2>Sources</h2>
+      <p style="font-size:0.88rem; color:var(--muted); line-height:1.8;">
+        S. Ramaswami — <a href="https://yogastudies.org/wp-content/uploads/Ramaswami_20_Sagarbha_Praanaayama.pdf"><em>Sagarbha Pranayama</em></a> (essay, undated)<br>
+        S. Ramaswami — <a href="https://groups.google.com/g/vinyasa-krama-announce/c/MlnIoBl5wkQ/m/dlXofcXYAgAJ?utm_medium=email&utm_source=footer&pli=1">April 2026 Newsletter, "The Vinyasakrama Yoga"</a><br>
+        Seminar Transcripts — February 19–22, 2026, LMU Los Angeles<br>
+        Handwritten seminar notes (Amy Smith) — February 19–22, 2026, LMU Los Angeles<br>
+        Patanjali — <em>Yoga Sutras</em> (referenced throughout)<br>
+        Cited texts: Yoga Yagnyavalkya · Siva Samhita · Gherunda Samhita ·
+        Hatha Pradipika · Trisikhibrahmanopanishad · Manusmriti
+      </p>
+    </section>
+
+    <footer>
+      Compiled from the Ramaswami / LMU February 2026 Vinyasa Krama Seminar.
+      For personal study only.
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>
